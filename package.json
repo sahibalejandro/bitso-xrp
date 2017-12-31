@@ -8,6 +8,6 @@
   "private": true,
   "scripts": {
       "start": "node backend/server.js",
-      "heroku-postbuild": "cd backend && yarn install && cd ../frontend && yarn install && yarn build"
+      "heroku-postbuild": "cd backend && npm install && cd ../frontend && npm install && npm run build"
   }
 }
