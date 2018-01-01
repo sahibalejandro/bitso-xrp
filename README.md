@@ -14,7 +14,7 @@ yarn start
 ```
 
 ## Backend development
-The backend is a simple API mad with express.  
+The backend is a simple API made with express.  
 Just start the express server as usual, it runs on `localhost:3001`
 
 ```bash
