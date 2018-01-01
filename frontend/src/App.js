@@ -47,7 +47,7 @@ export default class App extends Component {
                 });
             }
         } catch (err) {
-            console.err(`Error loading ticker payload: ${err.message}`);
+            console.error(`Error loading ticker payload: ${err.message}`);
         }
         
         setTimeout(this.getTickerPayload, 5000);
