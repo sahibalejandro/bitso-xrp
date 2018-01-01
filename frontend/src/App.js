@@ -100,46 +100,48 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="flex h-screen text-grey-darkest">
-                <div className="border-r p-8">
-                    <div className="mb-8">
-                        <label className="block mb-4 text-xl">Investment:</label>
-                        <div className="flex">
-                            <input className="border border-r-0 rounded-l-lg p-3 text-xl" type="text" name="investment" value={this.state.form.investment} onChange={this.handleChange}/>
-                            <div className="border rounded-r-lg p-3 text-xl">MXN</div>
-                        </div>
-                    </div>
-                    <div className="mb-8">
-                        <label className="block mb-4 text-xl">Ripples:</label>
-                        <div className="flex">
-                            <input className="border border-r-0 rounded-l-lg p-3 text-xl" type="text" name="ripples" value={this.state.form.ripples} onChange={this.handleChange}/>
-                            <div className="border rounded-r-lg p-3 text-xl">XRP</div>
-                        </div>
-                    </div>
-                    <div className="text-xl mb-4">
-                        XRP: {accounting.formatMoney(this.state.payload.last)} <span className="text-sm">MXN</span> {this.renderValueIndicator(this.state.payload.last, this.state.lastPrice)}
-                    </div>
-                    <div class="text-lg text-grey">
-                        Last update: {this.state.payload.created_at}
-                    </div>
+            <div className="container">
+                <div className="text-center mt-5">
+                    <h1>
+                        {accounting.formatMoney(this.getTotal())} <small className="text-muted">MXN</small>
+                    </h1>
+
+                    <div>Earnings</div>
+                    <h3 className="text-success">
+                        {accounting.formatMoney(this.getEarnings())} <small className="text-muted">MXN</small>
+                    </h3>
+
+                    <div>Loss</div>
+                    <h3 className="text-danger">
+                        {accounting.formatMoney(this.getLoss())} <small className="text-muted">MXN</small>
+                    </h3>
                 </div>
-                <div className="flex-1">
-                    <div className="text-center" style={{fontSize: '10rem', margin: '10rem 0'}}>
-                        {accounting.formatMoney(this.getTotal())} <span className="text-grey text-5xl">MXN</span>
-                    </div>
-                    <div className="flex text-5xl">
-                        <div className="flex-1 text-center">
-                            <div className="text-grey">Loss</div>
-                            <div className="text-red-light">
-                                {accounting.formatMoney(this.getLoss())} <span className="text-red-lighter text-xl">MXN</span>
+
+                <div className="card text-center mt-5 mb-3">
+                    <div className="card-body">
+
+                        <label>Investment:</label>
+                        <div className="input-group">
+                            <input type="text" className="form-control" name="investment" value={this.state.form.investment} onChange={this.handleChange}/>
+                            <div className="input-group-append">
+                                <span className="input-group-text">MXN</span>
                             </div>
                         </div>
-                        <div className="flex-1 text-center">
-                            <div className="text-grey">Earnings</div>
-                            <div className="text-green-dark">
-                                {accounting.formatMoney(this.getEarnings())} <span className="text-green text-xl">MXN</span>
+
+                        <label>Ripples:</label>
+                        <div className="input-group">
+                            <input type="text" className="form-control" name="ripples" value={this.state.form.ripples} onChange={this.handleChange}/>
+                            <div className="input-group-append">
+                                <span className="input-group-text">XRP</span>
                             </div>
                         </div>
+
+                        <div className="my-3">
+                            XRP: {accounting.formatMoney(this.state.payload.last)} <small className="text-muted">MXN</small> {this.renderValueIndicator(this.state.payload.last, this.state.lastPrice)}
+                        </div>
+                        <small className="text-muted">
+                            Last update: {this.state.payload.created_at}
+                        </small>
                     </div>
                 </div>
             </div>
